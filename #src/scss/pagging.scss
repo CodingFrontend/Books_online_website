@@ -1,0 +1,26 @@
+.pagging {
+	&__list {
+		display: flex;
+	}
+
+	&__item {
+		display: inline-block;
+		span {
+			height: 24px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding: 0px 8px;
+			font-size: 15px;
+			font-weight: 300;
+			color: #646464;
+		}
+		&._active {
+			border-bottom: 4px solid #81bd66;
+			span {
+				border: 1px solid #e0e0e0;
+				border-bottom: none;
+			}
+		}
+	}
+}

@@ -1,0 +1,359 @@
+/*JS version*/
+.popup {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.8);
+	top: 0;
+	left: 0;
+	z-index: 1040;
+	opacity: 0;
+	visibility: hidden;
+	overflow-y: auto;
+	overflow-x: hiden;
+	transition: all 0.3s ease 0s;
+	&__content {
+		min-height: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0rem 1.5rem;
+	}
+	&__body {
+		background-color: #fff;
+		border-radius: 0.6rem;
+		width: 100%;
+		max-width: 61.5rem;
+		padding: 6.1rem 8.8rem;
+		position: relative;
+		transition: all 0.3s ease 0s;
+		transform: translate(0, -100%);
+		opacity: 0;
+		@media (max-width: $md3+px) {
+			padding: 5.1rem 1rem 3.6rem 1rem;
+		}
+	}
+	&__close {
+		position: absolute;
+		right: 2.4rem;
+		top: 2.2rem;
+		width: 2rem;
+		height: 2rem;
+		opacity: 0.3;
+		&:hover {
+			opacity: 1;
+		}
+		&:before,
+		&:after {
+			content: "";
+			position: absolute;
+			left: 0rem;
+			height: 0.2rem;
+			width: 100%;
+			background-color: #333;
+		}
+		&:before {
+			@include rotate(-45deg);
+		}
+		&:after {
+			@include rotate(45deg);
+		}
+	}
+}
+
+.close-popup {
+}
+.popupInfo {
+	&__title {
+		font-weight: 600;
+		font-size: 2.2rem;
+		line-height: 3.3rem;
+		text-align: center;
+		color: #37373f;
+		margin-bottom: 3.1rem;
+		@media (max-width: $md3+px) {
+			margin-bottom: 2.4rem;
+		}
+	}
+	&__form {
+	}
+}
+.d-flex {
+}
+.flex-column {
+}
+
+.form-popupInfo {
+	font-size: 1.6rem;
+	line-height: 2rem;
+	letter-spacing: 0.1rem;
+	&__field {
+		margin-bottom: 1rem;
+		&__credit {
+			margin-bottom: 0rem;
+		}
+		&_checkbox {
+			margin: 3.4rem 0rem 2.3rem 0rem;
+			padding-left: 2.6rem;
+			position: relative;
+			user-select: none;
+			cursor: pointer;
+			color: #37373f;
+			a {
+				color: #37373f;
+				&:hover {
+					text-decoration: underline;
+				}
+			}
+			&:hover .checkmark {
+				background-color: #ccc;
+			}
+			@media (max-width: $md3+px) {
+				margin: 2.3rem 0rem;
+			}
+		}
+	}
+	&__label {
+		font-weight: 500;
+		margin-bottom: 1rem;
+		color: #37373f;
+		&:after {
+			content: "*";
+			font-weight: 500;
+			color: red;
+		}
+	}
+	&__input {
+		width: 100%;
+		padding: 1.3rem 2rem 1.1rem 2rem;
+		border: 0.1rem solid #c7c7c7;
+		border-radius: 0.3rem;
+		&_date {
+			cursor: pointer;
+			background: url("../img/icons/Calendar.svg") right 2.6rem center no-repeat,
+				url("../img/icons/Rectangle 3.svg") right 2rem center no-repeat;
+		}
+		&_terms {
+			position: absolute;
+			width: 0;
+			height: 0;
+			opacity: 0;
+			cursor: pointer;
+			&:checked ~ .checkmark {
+				background-color: #fff;
+			}
+			&:checked ~ .checkmark:after {
+				display: block;
+			}
+		}
+	}
+	&__btn {
+		font-weight: 600;
+		font-size: 1.6rem;
+		letter-spacing: 0.1rem;
+		text-align: center;
+		padding: 2.7rem 12.9rem;
+		color: #fff;
+		background-color: #fff;
+		border-radius: 0.3rem;
+		transition: all 0.3s ease 0s;
+		&:hover {
+			text-decoration: none;
+			background-color: #ec940e;
+		}
+		@media (max-width: $md3+px) {
+			padding: 1.6rem 6.8rem;
+			font-size: 1.4rem;
+		}
+	}
+}
+.checkmark {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 1.6rem;
+	width: 1.6rem;
+	background-color: #e8e8e8;
+	border-radius: 0.2rem;
+	&:after {
+		content: "";
+		position: absolute;
+		display: none;
+		left: 0.6rem;
+		top: 0.4rem;
+		width: 0.5rem;
+		height: 0.7rem;
+		border: solid white;
+		border-width: 0 0.2rem 0.2rem 0;
+		transform: rotate(45deg);
+	}
+}
+.input {
+	&__group {
+		border: 0.1rem solid #c7c7c7;
+		border-radius: 0.3rem;
+		&_card {
+			color: #c7c7c7;
+		}
+		input {
+			border-radius: 0rem;
+			border: none;
+		}
+		input:nth-child(1) {
+			border-bottom: 0.1rem solid #c7c7c7;
+		}
+		input:nth-child(2) {
+			border-right: 0.1rem solid #c7c7c7;
+		}
+		@media (max-width: $md3+px) {
+			input:nth-child(2) {
+				border-right: none;
+				border-bottom: 0.1rem solid #c7c7c7;
+			}
+		}
+	}
+}
+.popup.open {
+	opacity: 1;
+	visibility: visible;
+	.popup__body {
+		transform: translate(0, 0%);
+		opacity: 1;
+	}
+}
+
+/*css and HTML*/
+/*.popup {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.8);
+	top: 0;
+	left: 0;
+	z-index: 100;
+	opacity: 0;
+	visibility: hidden;
+	overflow-y: auto;
+	overflow-x: hiden;
+	transition: all 0.3s ease 0s;
+	&__content {
+		min-height: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 3rem 1rem;
+	}
+	&__body {
+		background-color: #fff;
+		color: #000;
+		max-width: 80rem;
+		padding: 3rem;
+		position: relative;
+		transition: all 0.3s ease 0s;
+		transform: translate(0,-100%);
+		opacity: 0;
+	}
+	&__close {
+		position: absolute;
+		right: 1rem;
+		top: 1rem;
+		font-size: 2rem;
+		color: #000;
+		text-decoration: none;
+	}
+	&__area {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+}
+.popup:target {
+	opacity: 1;
+	visibility: visible;
+	.popup__body {
+		transform: translate(0,0%);
+		opacity: 1;
+	}
+}
+*/
+/*//====================================================================================================
+.popup {
+	overflow: auto;
+	-webkit-overflow-scrolling: touch;
+	z-index: 100;
+	padding: 30px 10px;
+	position: fixed;
+	top: 0px;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	transition: visibility 0.8s ease 0s;
+	visibility: hidden;
+	&::before {
+		content: "";
+		background-color: rgba(0, 0, 0, 0.9);
+		position: fixed;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		opacity: 0;
+		transition: opacity 0.8s ease 0s;
+	}
+	&.show {
+		visibility: visible;
+		&::before {
+			opacity: 1;
+		}
+		.popup__body {
+			transform: scale(1);
+		}
+	}
+	&._active {
+		visibility: visible;
+		&::before {
+			opacity: 1;
+		}
+		.popup__body {
+			transition: all 0.3s ease 0.2s;
+			transform: scale(1);
+		}
+	}
+	// .popup__content
+	&__content {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		min-height: 100%;
+		flex: 1 1 auto;
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	// .popup__body
+	&__body {
+		transform: scale(0);
+		transition: all 0.3s ease 0s;
+		background-color: #fff;
+		color: #000;
+		padding: 50px;
+		width: 100%;
+		max-width: 800px;
+	}
+	// .popup__close
+	&__close {
+		width: 15px;
+		height: 15px;
+		position: absolute;
+		top: 0px;
+		right: 0px;
+		cursor: pointer;
+		z-index: 30;
+		background: url("../img/icons/close.svg") 0 0 no-repeat;
+	}
+}
+//====================================================================================================
+//====================================================================================================*/
